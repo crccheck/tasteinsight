@@ -22,8 +22,10 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'taggit',
     'tasteinsight.apps.backend',
 
     # support
@@ -88,6 +90,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+SITE_ID = 1
 
 LOGGING = {
     'version': 1,
