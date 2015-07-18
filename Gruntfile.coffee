@@ -6,7 +6,7 @@ module.exports = (grunt) ->
         sourceMap: true
       dist:
         files:
-          'tasteinsight/static/app.css': 'tasteinsight/static_src/sass/app.sass'
+          'tasteinsight/static/app.css': 'tasteinsight/static_src/styles/app.sass'
     autoprefixer:
       options:
         browsers: ['last 2 versions']
@@ -16,10 +16,6 @@ module.exports = (grunt) ->
           src: 'tasteinsight/static/app.css'
           # overwrite original
           dest: 'tasteinsight/static/app.css'
-    jshint:
-      all: [
-        'tasteinsight/static/js_src/**/*.js'
-      ]
     browserify:
       app:
         files:
@@ -35,7 +31,7 @@ module.exports = (grunt) ->
       options:
         livereload: true
       sass:
-        files: ['tasteinsight/static_src/sass/**/*.sass']
+        files: ['tasteinsight/static_src/styles/**/*.sass']
         tasks: ['sass', 'autoprefixer']
         options:
           livereload: false
@@ -53,7 +49,6 @@ module.exports = (grunt) ->
 
   grunt.loadNpmTasks 'grunt-sass'
   grunt.loadNpmTasks 'grunt-autoprefixer'
-  grunt.loadNpmTasks 'grunt-contrib-jshint'
   grunt.loadNpmTasks 'grunt-browserify'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
   grunt.loadNpmTasks 'grunt-contrib-watch'
@@ -61,6 +56,6 @@ module.exports = (grunt) ->
   # build the assets needed
   grunt.registerTask('build', ['sass', 'autoprefixer', 'browserify', 'uglify'])
   # build the assets with sanity checks
-  grunt.registerTask('default', ['sass', 'autoprefixer', 'jshint', 'browserify', 'uglify'])
+  grunt.registerTask('default', ['sass', 'autoprefixer', 'browserify', 'uglify'])
   # build assets and automatically re-build when a file changes
   grunt.registerTask('dev', ['build', 'watch'])
